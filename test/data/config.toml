@@ -10,7 +10,7 @@ password = "redis"
 buffsize = 10
 
 [[templates]]
-src   = "./test/data/template/nginx.tpl"
+src   = "./test/data/templates/nginx.tpl"
 dst   = "./test/data/tmp/git.conf"
 mode  = 0644
 user  = "nginx"
