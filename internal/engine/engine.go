@@ -60,7 +60,7 @@ func (e *engine) process(data []storage.Data) {
 	}
 
 	if len(keys) != 0 {
-		log.Debugf("process keys: %v", keys)
+		log.Infof("process keys: %v", keys)
 		result := e.watcher.Notify(keys)
 		e.storage.Report(result)
 	}

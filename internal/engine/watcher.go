@@ -3,6 +3,7 @@ package engine
 import (
 	"swan/internal/storage"
 	"swan/internal/template"
+	"swan/pkg/log"
 	"sync"
 )
 
@@ -69,6 +70,7 @@ func (watcher *templateProcessorWatcher) Notify(keys []string) []storage.Result 
 	result := make([]storage.Result, 0)
 
 	for _, processor := range processors {
+		log.Infof("render template: %s", processor.GetTemplate())
 		err := processor.Render()
 		if err != nil {
 			result = append(result, storage.Result{
