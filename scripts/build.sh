@@ -13,4 +13,4 @@ CM_ARCH=${CM_ARCH:-"amd64"}
 CM_OS=${CM_OS:-"linux"}
 
 echo "==> building..."
-GOOS=$OS GOARCH=$arch go build -o bin/swan-${os}-${arch} cmd/swan.go
+GOOS=$CM_OS GOARCH=$CM_ARCH go build -o bin/swan-${CM_OS}-${CM_ARCH} cmd/swan.go
