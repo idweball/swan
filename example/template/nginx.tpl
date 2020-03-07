@@ -2,10 +2,10 @@
     server {
     {{- with $domain := getv "vm.s1.nginx.domain.git.server_name" }}
         server_name {{ $domain }};
-    {{- end -}}
+    {{- end }}
     {{- with $port := getv "vm.s1.nginx.domain.git.port" }}
         listen {{ $port }};
-    {{- end -}}
+    {{- end }}
     {{- with $root := getv "vm.s1.nginx.domain.git.root" }}
         root {{ $root }};
     {{- end }}

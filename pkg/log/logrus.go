@@ -4,6 +4,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"io"
 	"os"
+	"time"
 )
 
 type logrusLogger struct {
@@ -12,7 +13,11 @@ type logrusLogger struct {
 
 func newLogrusLogger() Logger {
 	engine := logrus.New()
-	engine.SetFormatter(&logrus.TextFormatter{})
+	engine.SetFormatter(&logrus.TextFormatter{
+		FullTimestamp:true,
+		DisableColors:true,
+		TimestampFormat:time.RFC3339,
+	})
 	engine.SetOutput(os.Stdout)
 	engine.SetLevel(logrus.DebugLevel)
 	return &logrusLogger{engine: engine}

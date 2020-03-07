@@ -18,6 +18,10 @@ func Run() {
 		log.Fatalln(err)
 	}
 
+	if cfg.Log.Level != "" {
+		log.SetLeveL(cfg.Log.Level)
+	}
+
 	s, err := storage.New(cfg.Storage.Type, cfg.Storage.Config)
 	if err != nil {
 		log.Fatalln(err)

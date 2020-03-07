@@ -13,10 +13,15 @@ type Storage struct {
 	Config map[string]interface{} `toml:"config"`
 }
 
+type Log struct {
+	Level string `toml:"level"`
+}
+
 //Config 配置文件内容
 type Config struct {
 	Storage   Storage           `toml:"storage"`
 	Templates []template.Config `toml:"templates"`
+	Log       Log               `toml:"log"`
 }
 
 //CfgParser 解析配置文件

@@ -83,7 +83,7 @@ type Storage struct {
 //Get 获取指定keys数据
 func (s *Storage) Get(keys []string) (ch chan []storage.Data, errCh chan error, err error) {
 	ch = make(chan []storage.Data, s.buffSize)
-	go s.poll(keys, ch)
+	s.poll(keys, ch)
 	return ch,  s.errCh, nil
 }
 

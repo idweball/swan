@@ -54,12 +54,13 @@ func (e *engine) process(data []storage.Data) {
 
 		e.kv.Set(v.Key, v.Value)
 
-		if !elementInStrSlice(v.Key, e.keys) {
+		if !elementInStrSlice(v.Key, keys) {
 			keys = append(keys, v.Key)
 		}
 	}
 
 	if len(keys) != 0 {
+		log.Debugf("process keys: %v", keys)
 		result := e.watcher.Notify(keys)
 		e.storage.Report(result)
 	}

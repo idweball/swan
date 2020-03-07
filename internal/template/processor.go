@@ -108,12 +108,15 @@ func chown(name, user, group string) error {
 		err error
 	)
 	if uid, err = getUID(user); err != nil {
-		return err
+		return &ChownError{Err:err}
 	}
 	if gid, err = getGID(group); err != nil {
-		return err
+		return &ChownError{Err:err}
 	}
-	return os.Chown(name, uid, gid)
+	if err = os.Chown(name, uid, gid); err != nil {
+		return &ChownError{Err:err}
+	}
+	return nil
 }
 
 func getUID(name string) (uid int, err error) {
@@ -132,4 +135,12 @@ func getGID(name string) (gid int, err error) {
 		return
 	}
 	return strconv.Atoi(g.Gid)
+}
+
+type ChownError struct {
+	Err error
+}
+
+func (c *ChownError) Error() string {
+	return "chown error: " + c.Err.Error()
 }
