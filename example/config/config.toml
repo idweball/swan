@@ -1,0 +1,22 @@
+[storage]
+type = "redis"
+
+[storage.config]
+hostname = "192.168.30.100"
+port     = 6379
+db       = 0
+interval = 3
+password = "redis"
+buffsize = 10
+
+[[templates]]
+src   = "./test/data/template/nginx.tpl"
+dst   = "./test/data/tmp/git.conf"
+mode  = 0644
+user  = "nginx"
+group = "nginx"
+keys  = [
+    "vm.s1.nginx.domain.git.server_name",
+    "vm.s1.nginx.domain.git.port",
+    "vm.s1.nginx.domain.git.root"
+]
