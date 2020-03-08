@@ -6,7 +6,7 @@ PROJECT_DIR="$SCRIPT_DIR/../"
 cd ${PROJECT_DIR}
 
 echo "==> Removing old files"
-rm -f bin
+rm -rf bin
 mkdir -p bin
 
 CM_ARCH=${CM_ARCH:-"amd64"}
