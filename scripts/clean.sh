@@ -6,5 +6,5 @@ PROJECT_DIR="$SCRIPT_DIR/../"
 cd ${PROJECT_DIR}
 
 echo "==> cleanning..."
-rm -r bin
-rm -r test/data/tmp/*
+rm -rf bin
+rm -rf test/data/tmp/*
